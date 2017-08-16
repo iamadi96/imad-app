@@ -1,17 +1,23 @@
-console.log('Loaded!');
-var element = document.getElementById("mainText");
-element.innerHTML = "New Value";
+//counter code
+var button = document.getElemnetById('counter');
 
-//make the image move
+button.onclick = function () {
+  
+  //create a request object
+  var request = new XMLHttpRequest();
+  
+  //capture the response and storeit in a variable
+  request.onreadystatechange = function(){
+      if (request.status === 200){
+          var counter = request.responseText;
+          var span = document.gotElementById('count');
+          span.innerHTML = counter.toString();
+      }
+  }
+    //not done yet
+};
 
-var img = document.getElementById("yala");
-
-var marginLeft = 0;
-function moveRight(){
-    marginLeft= marginLeft + 5;
-    img.style.marginLeft= marginLeft + "px";
-}
-
-img.onclick = function() {
-  var interval = setInterval(moveRight, 50);  
-}; 
+//make the request
+    request.open('GET', 'http://ap96adi.imad.hasura-app.io/counter', true);
+    request.send(null);
+};
