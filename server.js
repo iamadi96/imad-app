@@ -19,8 +19,8 @@ var articles = {
             </p>`    
     },
     'article-two' : {
-    title : "Aritcle Two",    
-    heading : "Aritcle Two | Adi",    
+    title : "Aritcle Two | Adi",    
+    heading : "Aritcle Two",    
     date : "Aug 21 2017",
     content : `
             <p>
@@ -31,8 +31,8 @@ var articles = {
             </p>`    
     },
     'article-three' : {
-    title : "Aritcle Three",    
-    heading : "Aritcle Three | Adi",    
+    title : "Aritcle Three | Adi",    
+    heading : "Aritcle Three",    
     date : "Aug 25 2017",
     content : `
             <p>
