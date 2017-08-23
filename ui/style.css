@@ -1,6 +1,6 @@
 body {
     font-family: Cursive;
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
 .center {
@@ -24,7 +24,6 @@ body {
     font-family: Cursive;
     margin: 0 auto;
     max-width: 800px;
-    padding-top: 60px;
     padding-left: 20px;
     padding-right: 20px;
 }
