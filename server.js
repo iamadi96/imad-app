@@ -5,51 +5,78 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-title : "Aritcle One",    
-heading : "Aritcle One",    
-date : "Aug 5 2017",
-content : `
-        <p>
-            Hello! I'm Aditya Pandey and i'm a student at bharati Vidyapeeth's College Of Engineering.
-        </p>
-        <p>
-            I'm 20 years old and live in Delhi.
-        </p>`    
+var articles = {
+    'article-one' : {
+    title : "Aritcle One",    
+    heading : "Aritcle One",    
+    date : "Aug 5 2017",
+    content : `
+            <p>
+                Hello! I'm Aditya Pandey and i'm a student at bharati Vidyapeeth's College Of Engineering.
+            </p>
+            <p>
+                I'm 20 years old and live in Delhi.
+            </p>`    
+    },
+    'article-two' : {
+    title : "Aritcle Two",    
+    heading : "Aritcle Two",    
+    date : "Aug 21 2017",
+    content : `
+            <p>
+                Hello! I'm Aditya Pandey and i'm a student at bharati Vidyapeeth's College Of Engineering.
+            </p>
+            <p>
+                I'm 20 years old and live in Delhi.
+            </p>`    
+    },
+    'article-three' : {
+    title : "Aritcle Three",    
+    heading : "Aritcle Three",    
+    date : "Aug 25 2017",
+    content : `
+            <p>
+                Hello! I'm Aditya Pandey and i'm a student at bharati Vidyapeeth's College Of Engineering.
+            </p>
+            <p>
+                I'm 20 years old and live in Delhi.
+            </p>`    
+    }
 };
+
 var template = function(data){
-var title = data.title;
-var heading = data.heading;
-var date = data.date;
-var content = data.content;
-var htmlTemplate = `<!DOCTYPE html>
-<html>
-  <head>
-    <title>
-    ${title}
-    </title>
-    <link href="/ui/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="container">
-        <a href="/">
-        Home
-        </a>
-        <hr/>
-        <h1>
-        ${heading}
-        </h1>
-        <div>
-        ${date}
-        </div>
-        <div>
-        ${content}  
-        </div>
-    </div>
-   </body>
-</html>
-`;
-return htmlTemplate;
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var htmlTemplate = `<!DOCTYPE html>
+                        <html>
+                          <head>
+                            <title>
+                            ${title}
+                            </title>
+                            <link href="/ui/style.css" rel="stylesheet" />
+                          </head>
+                          <body>
+                            <div class="container">
+                                <a href="/">
+                                Home
+                                </a>
+                                <hr/>
+                                <h1>
+                                ${heading}
+                                </h1>
+                                <div>
+                                ${date}
+                                </div>
+                                <div>
+                                ${content}  
+                                </div>
+                            </div>
+                           </body>
+                        </html>
+                        `;
+                        return htmlTemplate;
 };
     
 
@@ -57,8 +84,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(template(articleOne));
+app.get('/:articleName', function (req, res) {
+  res.send(template(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
