@@ -23,10 +23,10 @@ request.send(null);
 };
 
 //submit name
-var nameInput = document.getElementById('name');
-var name = nameInput.value;
+
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
+    
     //make a request to the server to send names.
     var request = new XMLHttpRequest();
     
@@ -50,6 +50,9 @@ submit.onclick = function() {
       //not done yet    
     };
     //make the request
+    var nameInput = document.getElementById('name');
+    var name = nameInput.value;
+    
 request.open('GET', 'http://ap96adi.imad.hasura-app.io/submit-name?name=' + name, true);
 request.send(null);
 
