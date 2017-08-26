@@ -28,13 +28,30 @@ var name = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     //make a request to the server to send names.
+    var request = new XMLHttpRequest();
     
-    //capture the list of names and render it as a list.
-    var names =['name1', 'name2', 'name3', 'name4'];
+    //capture a response and store it in a variable
+    request.onreadystatechange = function(){
+        if (request.readyState === XMLHttpRequest.DONE) {
+            //Take some action
+            if(request.status === 200) {
+            //capture the list of names and render it as a list.
+    var names = request.responseText;
+    names = JSON.parse(names);
     var list = '';
     for (var i =0; i<list.length; i++){
         list += '<li>' + names[i] + '</li>';
     }
     var ul = document.getElementById('namelist');
     ul.innerHTML= list;
+                
+            }
+        }
+      //not done yet    
+    };
+    //make the request
+request.open('GET', 'http://ap96adi.imad.hasura-app.io/submit-name?name=' + name, true);
+request.send(null);
+
+    
 };
