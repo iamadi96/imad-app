@@ -14,7 +14,7 @@ var config ={
 var app = express();
 app.use(morgan('combined'));
 
-var articles = {
+/*var articles = {
     'article-one' : {
     title : "Aritcle One | Adi",    
     heading : "Aritcle One",    
@@ -51,7 +51,7 @@ var articles = {
                 I'm 20 years old and live in Delhi.
             </p>`    
     }
-};
+}; */
 
 var createTemplate = function(data){
     var title = data.title;
