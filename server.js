@@ -5,20 +5,6 @@ var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
 
-var pool = new Pool(config);
-app.get('/test-db', function(req, res){
-   // make a select request
-   // return a response with the results
-   pool.query('SELECT * FROM test', function(err, result){
-       if(err){
-           res.status(500).send(err.toString());
-       } else{
-           res.send(JSON.stringify(result.rows));
-       }
-   });
-});
-
-
 var config ={
     user: 'ap96adi',
     database: 'ap96adi',
@@ -160,6 +146,18 @@ app.post('/login', function(req, res){
     });
 });
 
+var pool = new Pool(config);
+app.get('/test-db', function(req, res){
+   // make a select request
+   // return a response with the results
+   pool.query('SELECT * FROM test', function(err, result){
+       if(err){
+           res.status(500).send(err.toString());
+       } else{
+           res.send(JSON.stringify(result.rows));
+       }
+   });
+});
 
 var counter = 0;    
 app.get('/counter', function(req, res){
