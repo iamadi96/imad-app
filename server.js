@@ -9,7 +9,7 @@ var config ={
     user: 'ap96adi',
     database: 'ap96adi',
     host: 'db.imad.hasura-app.io',
-    port: '5432',
+    port: 5432,
     password: process.env.DB_PASSWORD 
 };
 
